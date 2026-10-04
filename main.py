@@ -1,5 +1,3 @@
-import json
-
 tasks=[]
 print("---------------------------")
 print("|    -=First Mark=-       |")
