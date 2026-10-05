@@ -12,6 +12,5 @@ A simple command-line Todo application written in Python.
 
 ## Future Plans
 
-- JSON storage
 - Task editing
 - GUI
