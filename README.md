@@ -11,6 +11,6 @@ A simple command-line Todo application written in Python.
 - Error handling
 
 ## Future Plans
-
+ 
 - Task editing
 - GUI
