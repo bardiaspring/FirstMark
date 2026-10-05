@@ -1,4 +1,5 @@
-tasks=[]
+tasks = []
+
 print("---------------------------")
 print("|    -=First Mark=-       |")
 print("| 1.Add Task              |")
@@ -8,40 +9,58 @@ print("| 4.Mark Task             |")
 print("| 5.Remove All Task       |")
 print("| 6.Exit                  |")
 print("---------------------------")
+
 while True:
     try:
-        inpt0=int(input('Enter The Number: '))
+        inpt0 = int(input("Enter The Number: "))
 
         if inpt0 == 1:
-            task_name=input("Enter The Task: ").strip()
-            if task_name=="":
+            task_name = input("Enter The Task: ").strip()
+
+            if task_name == "":
                 print("-Task can't be empty!-")
             else:
-                tasks.append({'name':task_name,'mark':False})
+                tasks.append({
+                    'name': task_name,
+                    'mark': False
+                })
                 print("-Task Added-")
 
         elif inpt0 == 2:
             if not tasks:
                 print("-No Task-")
             else:
-                task_number=int(input('Enter The Number Task: '))
-                tasks.pop(task_number -1)
-                print("-Task Removed-")
+                task_number = int(input("Enter The Number Task: "))
+
+                if 1 <= task_number <= len(tasks):
+                    tasks.pop(task_number - 1)
+                    print("-Task Removed-")
+                else:
+                    print("-Task not found!-")
 
         elif inpt0 == 3:
-            for number, task in enumerate(tasks, start=1):
-                if task['mark']:
-                    mark="*"
-                else:
-                    mark=" "
-                print(f"{number}.{task['name']} [{mark}]")
-            if tasks == []:
+            if not tasks:
                 print("-No Task-")
+            else:
+                for number, task in enumerate(tasks, start=1):
+                    if task['mark']:
+                        mark = "*"
+                    else:
+                        mark = " "
+
+                    print(f"{number}.{task['name']} [{mark}]")
 
         elif inpt0 == 4:
-            task_number=int(input('Enter The Number Task: '))
-            tasks[task_number -1]['mark'] = not tasks[task_number -1]['mark']
-            print('-Task Marked-')
+            if not tasks:
+                print("-No Task-")
+            else:
+                task_number = int(input("Enter The Number Task: "))
+
+                if 1 <= task_number <= len(tasks):
+                    tasks[task_number - 1]['mark'] = not tasks[task_number - 1]['mark']
+                    print("-Task Marked-")
+                else:
+                    print("-Task not found!-")
 
         elif inpt0 == 5:
             tasks.clear()
@@ -50,11 +69,9 @@ while True:
         elif inpt0 == 6:
             print("-Exited-")
             break
-        
+
         else:
-            print("Invalid option-")
+            print("-Invalid option-")
 
     except ValueError:
         print("-Please enter a number!-")
-    except IndexError:
-        print("-Task not found!-")
